@@ -1,3 +1,4 @@
+//variables
 let currentColor = 'black';
 const screen = document.querySelector('#tela');
 const ctx = screen.getContext('2d');
@@ -5,6 +6,7 @@ let cantDraw = false;
 let sideX;
 let sideY;
 
+//functions
 const draw = (posX, posY) => {
     let pX= posX - screen.offsetLeft;
     let pY= posY - screen.offsetTop;
@@ -46,8 +48,13 @@ const colorClick = (e) => {
     }
 }
 
+//events
 document.querySelectorAll('.color').forEach(c=>c.addEventListener('click', colorClick));
 screen.addEventListener('mousedown', mouseDownE);
 screen.addEventListener('mousemove', mouseMoveE);
 screen.addEventListener('mouseup', mouseUpE);
+document.querySelector('.clear').addEventListener('click', () => {
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0, ctx.canvas.width, ctx.canvas.height);
+})
 
